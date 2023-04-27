@@ -1,9 +1,13 @@
 package com.example.kotlinproject.ui.view.home
 
+import android.os.Bundle
 import android.util.Log
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.replace
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.kotlinproject.R
 import com.example.kotlinproject.domain.GetPokemonById
 import com.example.kotlinproject.domain.model.PokemonItem
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -29,6 +33,14 @@ class HomeViewModel @Inject constructor(
             pokemonHomeViewModel.postValue(listPokemons)
         }
         isLoading.postValue(false)
+    }
+
+    fun replaceFragment(originFragment: Fragment, destinationFragment: Fragment, bundle: Bundle){
+        val fragmentManager = originFragment.requireActivity().supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        destinationFragment.arguments = bundle
+        fragmentTransaction.replace(R.id.nav_host_fragment, destinationFragment)
+        fragmentTransaction.commit()
     }
 
 }

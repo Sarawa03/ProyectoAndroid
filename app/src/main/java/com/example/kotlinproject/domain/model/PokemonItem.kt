@@ -10,7 +10,7 @@ data class PokemonItem(
     @SerializedName("weight") val weight: String,
     @SerializedName("sprites") val sprites: PokeSprites,
     @SerializedName("types") val typeListItem: List<TypeListItem>,
-    @SerializedName("stats") val statsItem: List<StatsItem>,
+    @SerializedName("stats") val statsList: List<StatsItem>,
 
     )
 

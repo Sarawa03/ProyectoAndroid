@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kotlinproject.R
 import com.example.kotlinproject.databinding.FragmentHomeBinding
@@ -81,12 +82,12 @@ class HomeFragment : Fragment() {
         binding.rvPokedex.setHasFixedSize(true)
         binding.rvPokedex.layoutManager = LinearLayoutManager(this.context)
         binding.rvPokedex.adapter = adapter
-
-        binding.btnClick.setOnClickListener {
-            val fragmentTransaction = fragmentManager?.beginTransaction()
-            fragmentTransaction?.replace(R.id.nav_host_fragment, DetailsFragment())
-            fragmentTransaction?.commit()
-        }
+//
+//        binding.btnClick.setOnClickListener {
+//            val fragmentTransaction = fragmentManager?.beginTransaction()
+//            fragmentTransaction?.replace(R.id.nav_host_fragment, DetailsFragment())
+//            fragmentTransaction?.commit()
+//        }
 
         viewModel.randomPokemons()
     }
@@ -101,11 +102,16 @@ class HomeFragment : Fragment() {
     }
 
     private fun navigateToDetail(id: String){
+        val bundle = Bundle()
+        bundle.putString("id", id)
+        //Navigation.findNavController(this.view).navigate(R.id.action_homeFragment_to_detailsFragment)
+        viewModel.replaceFragment(this, DetailsFragment(), bundle)
+//
 //        val mainActivity = activity as MainActivity
 //        mainActivity.showDetails(id)
-        val fragmentTransaction = fragmentManager?.beginTransaction()
-        fragmentTransaction?.replace(R.id.nav_host_fragment, DetailsFragment())
-        fragmentTransaction?.commit()
+//        val fragmentTransaction = fragmentManager?.beginTransaction()
+//        fragmentTransaction?.replace(R.id.nav_host_fragment, DetailsFragment())
+//        fragmentTransaction?.commit()
     }
 
 }
