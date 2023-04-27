@@ -7,7 +7,9 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.kotlinproject.R
 import com.example.kotlinproject.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
@@ -24,5 +26,16 @@ class MainActivity : AppCompatActivity() {
         navController = navHostFragment.navController
 
         bottomNavigationView.setupWithNavController(navController)
+
+        binding.bottomNavView.setOnItemSelectedListener {
+            when(it.itemId){
+                binding.bottomNavView.menu.getItem(0).itemId -> navController.navigate(it.itemId)
+                binding.bottomNavView.menu.getItem(1).itemId -> navController.navigate(it.itemId)
+                binding.bottomNavView.menu.getItem(2).itemId -> navController.navigate(it.itemId)
+            }
+            true
+        }
     }
+
+
 }
