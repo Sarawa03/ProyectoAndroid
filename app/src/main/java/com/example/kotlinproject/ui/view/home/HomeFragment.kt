@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,6 +19,7 @@ import com.example.kotlinproject.domain.model.StatsItem
 import com.example.kotlinproject.domain.model.TypeItem
 import com.example.kotlinproject.domain.model.TypeListItem
 import com.example.kotlinproject.ui.view.DetailsFragment
+import com.example.kotlinproject.ui.view.MainActivity
 import com.example.kotlinproject.ui.view.home.recyclerview.PokemonHomeAdapter
 import com.example.kotlinproject.ui.view.search.SearchFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -34,38 +36,42 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initUI()
-        initTestValues()
+//        initTestValues()
 
     }
 
-    private fun initTestValues() {
-        val listPokemon = listOf(
-            PokemonItem(
-                "1",
-                "bulbasaur",
-                "7",
-                "69",
-                sprites = PokeSprites("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"),
-                listOf(
-                    TypeListItem(TypeItem("grass")),
-                    TypeListItem(TypeItem("poison"))
-                ),
-                listOf(
-                    StatsItem("45", StatName("hp")),
-                    StatsItem("49", StatName("attack")),
-                    StatsItem("49", StatName("defense")),
-                    StatsItem("65", StatName("special-attack")),
-                    StatsItem("65", StatName("special-defense")),
-                    StatsItem("45", StatName("speed")),
-                )
-
-            )
-        )
-
-        adapter.updateList(listPokemon)
-    }
+//    private fun initTestValues() {
+//        val listPokemon = listOf(
+//            PokemonItem(
+//                "1",
+//                "bulbasaur",
+//                "7",
+//                "69",
+//                sprites = PokeSprites("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"),
+//                listOf(
+//                    TypeListItem(TypeItem("grass")),
+//                    TypeListItem(TypeItem("poison"))
+//                ),
+//                listOf(
+//                    StatsItem("45", StatName("hp")),
+//                    StatsItem("49", StatName("attack")),
+//                    StatsItem("49", StatName("defense")),
+//                    StatsItem("65", StatName("special-attack")),
+//                    StatsItem("65", StatName("special-defense")),
+//                    StatsItem("45", StatName("speed")),
+//                )
+//
+//            )
+//        )
+//
+//        adapter.updateList(listPokemon)
+//    }
 
     private fun initUI() {
+
+        viewModel.isLoading.observe(viewLifecycleOwner, Observer {
+            binding.loading.isVisible = it
+        })
 
         viewModel.pokemonHomeViewModel.observe(viewLifecycleOwner, Observer {
             adapter.updateList(it)
@@ -81,6 +87,8 @@ class HomeFragment : Fragment() {
             fragmentTransaction?.replace(R.id.nav_host_fragment, DetailsFragment())
             fragmentTransaction?.commit()
         }
+
+        viewModel.randomPokemons()
     }
 
     override fun onCreateView(
@@ -93,6 +101,8 @@ class HomeFragment : Fragment() {
     }
 
     private fun navigateToDetail(id: String){
+//        val mainActivity = activity as MainActivity
+//        mainActivity.showDetails(id)
         val fragmentTransaction = fragmentManager?.beginTransaction()
         fragmentTransaction?.replace(R.id.nav_host_fragment, DetailsFragment())
         fragmentTransaction?.commit()

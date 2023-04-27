@@ -1,5 +1,6 @@
 package com.example.kotlinproject.domain.model
 
+import com.example.kotlinproject.data.model.PokeResponse
 import com.google.gson.annotations.SerializedName
 
 data class PokemonItem(
@@ -36,3 +37,5 @@ data class StatsItem(
 data class StatName(
     @SerializedName("name") val name: String
 )
+
+fun PokeResponse.toDomain() = PokemonItem(id, name, height, weight, sprites, typeListItem, statsItem)

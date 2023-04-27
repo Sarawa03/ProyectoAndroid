@@ -37,5 +37,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+//    fun showDetails(id: String) {
+//        val bundle = Bundle()
+//        bundle.putString("id", id)
+//        navController.navigate(R.id.searchFragment)
+//    }
+
 
 }
