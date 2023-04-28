@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlinproject.databinding.ItemPokemonBinding
 import com.example.kotlinproject.domain.model.PokemonItem
 import com.squareup.picasso.Picasso
+import java.text.DecimalFormat
 
 class PokemonHomeViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
@@ -15,9 +16,11 @@ class PokemonHomeViewHolder(view: View): RecyclerView.ViewHolder(view) {
         Log.i("PATATA", pokemonItem.toString())
         binding.tvPokemonName.text = pokemonItem.name
 
+        val dec = DecimalFormat("0000")
+
         binding.tvPokemonId.text = buildString {
             append("#")
-            append(pokemonItem.id)
+            append(dec.format(pokemonItem.id.toInt()))
         }
         Picasso.get().load(pokemonItem.sprites.imgFrontM).into(binding.ivPokemon)
 
