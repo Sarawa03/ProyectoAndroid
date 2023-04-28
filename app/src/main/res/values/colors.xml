@@ -22,4 +22,5 @@
     <color name="special_attack_color">#C34AAF</color>
     <color name="special_defense_color">#C3B34A</color>
     <color name="speed">#4AC38B</color>
+    <color name="pokedexColor">#F07A3C</color>
 </resources>

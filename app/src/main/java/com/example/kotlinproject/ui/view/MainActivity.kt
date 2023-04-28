@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
     fun showDetails(id: String) {
         val bundle = Bundle()
         bundle.putString("id", id)
-        navController.navigate(R.id.action_homeFragment_to_detailsFragment)
+        navController.navigate(R.id.detailsFragment, bundle)
     }
 
 

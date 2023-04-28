@@ -24,7 +24,7 @@ class HomeViewModel @Inject constructor(
 
     fun randomPokemons(){
         viewModelScope.launch {
-            isLoading.postValue(true)
+            //isLoading.postValue(true)
 
             val listPokemons: MutableList<PokemonItem> = mutableListOf()
             Log.i("PATATA", listPokemons.toString())
@@ -32,15 +32,8 @@ class HomeViewModel @Inject constructor(
             Log.i("PATATA", listPokemons.toString())
             pokemonHomeViewModel.postValue(listPokemons)
         }
-        isLoading.postValue(false)
+        //isLoading.postValue(false)
     }
 
-    fun replaceFragment(originFragment: Fragment, destinationFragment: Fragment, bundle: Bundle){
-        val fragmentManager = originFragment.requireActivity().supportFragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        destinationFragment.arguments = bundle
-        fragmentTransaction.replace(R.id.nav_host_fragment, destinationFragment)
-        fragmentTransaction.commit()
-    }
 
 }

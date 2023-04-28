@@ -1,6 +1,7 @@
 package com.example.kotlinproject.ui.view
 
 import android.os.Bundle
+import android.util.Log
 import android.util.TypedValue
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -35,6 +36,7 @@ class DetailsFragment() : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        Log.i("PATATA", idPokemon.toString())
         pokemonDetailsViewModel.postPokemonDetails(idPokemon!!)
 
         pokemonDetailsViewModel.pokemonDetailsModel.observe(viewLifecycleOwner, Observer {
@@ -56,7 +58,10 @@ class DetailsFragment() : Fragment() {
             append(pokemon.height)
             append(" lbs")
         }
-        binding.tvPokemonId.text = pokemon.id
+        binding.tvPokemonId.text = buildString {
+            append("#")
+            append(pokemon.id)
+        }
         drawStats(pokemon.statsList)
         loadTypes(pokemon.typeListItem)
     }

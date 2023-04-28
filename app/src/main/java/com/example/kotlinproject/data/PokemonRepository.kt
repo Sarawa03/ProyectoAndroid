@@ -15,4 +15,8 @@ class PokemonRepository @Inject constructor(private val api: PokeService){
 
     }
 
+    suspend fun getPokemonByName(name: String): PokemonItem {
+        return api.getPokemonByName(name).toDomain()
+    }
+
 }

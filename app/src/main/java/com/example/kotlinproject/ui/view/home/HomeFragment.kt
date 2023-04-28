@@ -9,20 +9,10 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.kotlinproject.R
 import com.example.kotlinproject.databinding.FragmentHomeBinding
-import com.example.kotlinproject.domain.model.PokeSprites
-import com.example.kotlinproject.domain.model.PokemonItem
-import com.example.kotlinproject.domain.model.StatName
-import com.example.kotlinproject.domain.model.StatsItem
-import com.example.kotlinproject.domain.model.TypeItem
-import com.example.kotlinproject.domain.model.TypeListItem
-import com.example.kotlinproject.ui.view.DetailsFragment
 import com.example.kotlinproject.ui.view.MainActivity
 import com.example.kotlinproject.ui.view.home.recyclerview.PokemonHomeAdapter
-import com.example.kotlinproject.ui.view.search.SearchFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -38,58 +28,54 @@ class HomeFragment : Fragment() {
 
         initUI()
 //        initTestValues()
-
     }
 
 //    private fun initTestValues() {
 //        val listPokemon = listOf(
 //            PokemonItem(
-//                "1",
-//                "bulbasaur",
-//                "7",
-//                "69",
-//                sprites = PokeSprites("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"),
-//                listOf(
-//                    TypeListItem(TypeItem("grass")),
-//                    TypeListItem(TypeItem("poison"))
-//                ),
-//                listOf(
-//                    StatsItem("45", StatName("hp")),
-//                    StatsItem("49", StatName("attack")),
-//                    StatsItem("49", StatName("defense")),
-//                    StatsItem("65", StatName("special-attack")),
-//                    StatsItem("65", StatName("special-defense")),
-//                    StatsItem("45", StatName("speed")),
-//                )
-//
-//            )
+////                "1",
+////                "bulbasaur",
+////                "7",
+////                "69",
+////                sprites = PokeSprites("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"),
+////                listOf(
+////                    TypeListItem(TypeItem("grass")),
+////                    TypeListItem(TypeItem("poison"))
+////                ),
+////                listOf(
+////                    StatsItem("45", StatName("hp")),
+////                    StatsItem("49", StatName("attack")),
+////                    StatsItem("49", StatName("defense")),
+////                    StatsItem("65", StatName("special-attack")),
+////                    StatsItem("65", StatName("special-defense")),
+////                    StatsItem("45", StatName("speed")),
+////                )
+////
+////            )
 //        )
 //
 //        adapter.updateList(listPokemon)
 //    }
 
     private fun initUI() {
-
-        viewModel.isLoading.observe(viewLifecycleOwner, Observer {
-            binding.loading.isVisible = it
-        })
+        binding.loading.isVisible = true
+//        viewModel.isLoading.observe(viewLifecycleOwner, Observer {
+//            binding.loading.isVisible = it
+//        })
 
         viewModel.pokemonHomeViewModel.observe(viewLifecycleOwner, Observer {
             adapter.updateList(it)
+            binding.loading.isVisible = false
         })
 
         adapter = PokemonHomeAdapter({navigateToDetail(it)})
         binding.rvPokedex.setHasFixedSize(true)
         binding.rvPokedex.layoutManager = LinearLayoutManager(this.context)
         binding.rvPokedex.adapter = adapter
-//
-//        binding.btnClick.setOnClickListener {
-//            val fragmentTransaction = fragmentManager?.beginTransaction()
-//            fragmentTransaction?.replace(R.id.nav_host_fragment, DetailsFragment())
-//            fragmentTransaction?.commit()
-//        }
 
         viewModel.randomPokemons()
+
+
     }
 
     override fun onCreateView(
@@ -102,16 +88,8 @@ class HomeFragment : Fragment() {
     }
 
     private fun navigateToDetail(id: String){
-        val bundle = Bundle()
-        bundle.putString("id", id)
-        //Navigation.findNavController(this.view).navigate(R.id.action_homeFragment_to_detailsFragment)
-        viewModel.replaceFragment(this, DetailsFragment(), bundle)
-//
-//        val mainActivity = activity as MainActivity
-//        mainActivity.showDetails(id)
-//        val fragmentTransaction = fragmentManager?.beginTransaction()
-//        fragmentTransaction?.replace(R.id.nav_host_fragment, DetailsFragment())
-//        fragmentTransaction?.commit()
+        val mainActivity = activity as MainActivity
+        mainActivity.showDetails(id)
     }
 
 }

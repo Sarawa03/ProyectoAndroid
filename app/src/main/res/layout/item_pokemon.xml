@@ -33,7 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_gravity="bottom"
-            android:background="@color/black">
+            android:background="@color/pokedexColor">
             <TextView
                 android:id="@+id/tvPokemonName"
                 android:layout_width="wrap_content"
