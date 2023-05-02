@@ -2,15 +2,19 @@ package com.example.kotlinproject.ui.view.home
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.kotlinproject.R
 import com.example.kotlinproject.databinding.FragmentHomeBinding
+import com.example.kotlinproject.domain.model.PokemonItem
 import com.example.kotlinproject.ui.view.MainActivity
 import com.example.kotlinproject.ui.view.home.recyclerview.PokemonHomeAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,6 +24,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class HomeFragment : Fragment() {
 
     private val viewModel by viewModels<HomeViewModel>()
+
     private var _binding: FragmentHomeBinding? = null
     private lateinit var adapter: PokemonHomeAdapter
     private val binding get() = _binding!!
@@ -27,54 +32,30 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initUI()
-//        initTestValues()
     }
-
-//    private fun initTestValues() {
-//        val listPokemon = listOf(
-//            PokemonItem(
-////                "1",
-////                "bulbasaur",
-////                "7",
-////                "69",
-////                sprites = PokeSprites("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"),
-////                listOf(
-////                    TypeListItem(TypeItem("grass")),
-////                    TypeListItem(TypeItem("poison"))
-////                ),
-////                listOf(
-////                    StatsItem("45", StatName("hp")),
-////                    StatsItem("49", StatName("attack")),
-////                    StatsItem("49", StatName("defense")),
-////                    StatsItem("65", StatName("special-attack")),
-////                    StatsItem("65", StatName("special-defense")),
-////                    StatsItem("45", StatName("speed")),
-////                )
-////
-////            )
-//        )
-//
-//        adapter.updateList(listPokemon)
-//    }
 
     private fun initUI() {
         binding.loading.isVisible = true
-//        viewModel.isLoading.observe(viewLifecycleOwner, Observer {
-//            binding.loading.isVisible = it
-//        })
 
         viewModel.pokemonHomeViewModel.observe(viewLifecycleOwner, Observer {
             adapter.updateList(it)
+            binding.swipe.isRefreshing = false
             binding.loading.isVisible = false
         })
 
-        adapter = PokemonHomeAdapter({navigateToDetail(it)})
+        adapter = PokemonHomeAdapter(onItemSelected = {navigateToDetail(it)}, addFavPokemon = {addFavPokemon(it)}, unfavPokemon = {unfavPokemon(it)})
         binding.rvPokedex.setHasFixedSize(true)
-        binding.rvPokedex.layoutManager = LinearLayoutManager(this.context)
+        binding.rvPokedex.layoutManager = GridLayoutManager(this.context, 2)
         binding.rvPokedex.adapter = adapter
 
         viewModel.randomPokemons()
 
+
+        binding.swipe.setColorSchemeColors(resources.getColor(R.color.pokedexColor), resources.getColor(R.color.loading2))
+        binding.swipe.setOnRefreshListener {
+            binding.swipe.isRefreshing = true
+            viewModel.randomPokemons()
+        }
 
     }
 
@@ -92,4 +73,11 @@ class HomeFragment : Fragment() {
         mainActivity.showDetails(id)
     }
 
+    private fun addFavPokemon(pokemonItem: PokemonItem){
+        viewModel.addFavPokemon(pokemonItem)
+    }
+
+    private fun unfavPokemon(pokemonItem: String){
+        viewModel.unfavPokemon(pokemonItem)
+    }
 }

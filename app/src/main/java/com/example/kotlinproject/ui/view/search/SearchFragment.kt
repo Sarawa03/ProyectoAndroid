@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kotlinproject.R
 import com.example.kotlinproject.databinding.FragmentHomeBinding
 import com.example.kotlinproject.databinding.FragmentSearchBinding
+import com.example.kotlinproject.domain.model.PokemonItem
 import com.example.kotlinproject.ui.view.MainActivity
 import com.example.kotlinproject.ui.view.home.recyclerview.PokemonHomeAdapter
 import com.example.kotlinproject.ui.view.search.recyclerview.SearchAdapter
@@ -60,7 +61,7 @@ class SearchFragment : Fragment() {
             binding.loading.isVisible = false
         })
 
-        adapter = SearchAdapter({ navigateToDetail(it) })
+        adapter = SearchAdapter(onItemSelected = {navigateToDetail(it)}, addFavPokemon = {addFavPokemon(it)}, unfavPokemon = {unfavPokemon(it)})
         binding.rvPokeSearch.setHasFixedSize(true)
         binding.rvPokeSearch.layoutManager = LinearLayoutManager(this.context)
         binding.rvPokeSearch.adapter = adapter
@@ -69,6 +70,14 @@ class SearchFragment : Fragment() {
     private fun navigateToDetail(id: String) {
         val mainActivity = activity as MainActivity
         mainActivity.showDetails(id)
+    }
+
+    private fun addFavPokemon(pokemonItem: PokemonItem){
+        viewModel.addFavPokemon(pokemonItem)
+    }
+
+    private fun unfavPokemon(pokemonItem: String){
+        viewModel.unfavPokemon(pokemonItem)
     }
 
 

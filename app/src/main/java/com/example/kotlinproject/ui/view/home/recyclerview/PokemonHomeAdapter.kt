@@ -7,7 +7,11 @@ import com.example.kotlinproject.R
 import com.example.kotlinproject.domain.model.PokemonItem
 import javax.inject.Inject
 
-class PokemonHomeAdapter @Inject constructor(private val onItemSelected: (String) -> Unit) :
+class PokemonHomeAdapter @Inject constructor(
+    private val onItemSelected: (String) -> Unit,
+    private val addFavPokemon: (PokemonItem) -> Unit,
+    private val unfavPokemon: (String) -> Unit
+) :
     RecyclerView.Adapter<PokemonHomeViewHolder>() {
 
     var pokemonList: List<PokemonItem> = emptyList()
@@ -28,7 +32,7 @@ class PokemonHomeAdapter @Inject constructor(private val onItemSelected: (String
     }
 
     override fun onBindViewHolder(holder: PokemonHomeViewHolder, position: Int) {
-        holder.bind(pokemonList[position], onItemSelected)
+        holder.bind(pokemonList[position], onItemSelected, addFavPokemon, unfavPokemon)
     }
 
 

@@ -1,12 +1,15 @@
 package com.example.kotlinproject.data.network
 
 import android.util.Log
+import com.example.kotlinproject.data.database.entities.FavPokemonEntity
 import com.example.kotlinproject.data.model.PokeResponse
 import com.example.kotlinproject.domain.model.PokeSprites
+import com.example.kotlinproject.domain.model.PokemonItem
 import com.example.kotlinproject.domain.model.StatName
 import com.example.kotlinproject.domain.model.StatsItem
 import com.example.kotlinproject.domain.model.TypeItem
 import com.example.kotlinproject.domain.model.TypeListItem
+import com.example.kotlinproject.domain.model.toDomain
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -52,6 +55,12 @@ class PokeService @Inject constructor(private val api: ApiService) {
                 )
 
             )
+    }
+
+    suspend fun getAllFavs(favorites: List<FavPokemonEntity>): List<PokemonItem> {
+        val result: MutableList<PokemonItem> = mutableListOf()
+        favorites.forEach { result.add(api.getPokemonById(it.idPokemon).body()!!.toDomain()) }
+        return result
     }
 }
 
