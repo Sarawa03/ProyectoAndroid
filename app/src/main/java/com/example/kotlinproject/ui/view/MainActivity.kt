@@ -17,8 +17,8 @@ class MainActivity : AppCompatActivity() {
     }
     private lateinit var navController: NavController
     private lateinit var binding: ActivityMainBinding
-    //private val email = intent.getStringExtra("email")
-    //private val provider = intent.getStringExtra("provider")
+    private val email = intent.getStringExtra("email")
+    private val provider = intent.getStringExtra("provider")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,12 +43,12 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-//    fun getEmail(): String{
-//        return email!!
-//    }
-//    fun getProvider(): String{
-//        return provider!!
-//    }
+    fun getEmail(): String{
+        return email!!
+    }
+    fun getProvider(): String{
+        return provider!!
+    }
     fun showDetails(id: String) {
         val bundle = Bundle()
         bundle.putString("id", id)
