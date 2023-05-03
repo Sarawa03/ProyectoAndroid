@@ -8,5 +8,5 @@ import javax.inject.Inject
 class AddFavPokemon @Inject constructor(
     private val repository: PokemonRepository
 ){
-    suspend operator fun invoke(favPokemon: PokemonItem, email: String) = repository.addFavPokemon(favPokemon, email)
+    suspend operator fun invoke(favPokemon: PokemonItem) = repository.addFavPokemon(favPokemon)
 }

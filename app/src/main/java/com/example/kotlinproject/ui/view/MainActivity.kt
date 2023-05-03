@@ -17,11 +17,15 @@ class MainActivity : AppCompatActivity() {
         BASIC
     }
 
+    companion object{
+        var email: String? = null
+        var provider: String? = null
+
+    }
 
     private lateinit var navController: NavController
     private lateinit var binding: ActivityMainBinding
-    private var email: String? = null
-    private var provider: String? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,13 +54,13 @@ class MainActivity : AppCompatActivity() {
 
     fun getEmail(): String{
         Log.i("DEBUGGING", email!!)
-//        return email
-        return ""
+        return email!!
+//        return ""
     }
     fun getProvider(): String{
         Log.i("DEBUGGING", provider!!)
-//        return provider
-        return ""
+        return provider!!
+//        return ""
     }
     fun showDetails(id: String) {
         val bundle = Bundle()

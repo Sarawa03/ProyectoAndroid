@@ -4,6 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.kotlinproject.domain.model.PokemonItem
+import com.example.kotlinproject.ui.view.MainActivity
 
 @Entity(tableName = "pokemon_table")
 data class FavPokemonEntity(
@@ -13,4 +14,4 @@ data class FavPokemonEntity(
     @ColumnInfo(name = "email") val email: String
 )
 
-fun PokemonItem.toEntityId(email: String) = FavPokemonEntity(idPokemon = id, email = email)
+fun PokemonItem.toEntityId() = FavPokemonEntity(idPokemon = id, email = MainActivity.email!!)

@@ -1,14 +1,9 @@
 package com.example.kotlinproject.ui.view.home
 
-import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.replace
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.kotlinproject.R
-import com.example.kotlinproject.data.database.entities.toEntityId
 import com.example.kotlinproject.domain.AddFavPokemon
 import com.example.kotlinproject.domain.GetPokemonById
 import com.example.kotlinproject.domain.RemoveFavPokemon
@@ -44,9 +39,9 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    fun addFavoritePokemon(pokemonItem: PokemonItem, email: String) {
+    fun addFavoritePokemon(pokemonItem: PokemonItem) {
         viewModelScope.launch {
-            addFavPokemon(pokemonItem, email)
+            addFavPokemon(pokemonItem)
             PokemonHomeViewHolder.favorites.add(pokemonItem.id)
         }
         Log.i("PATATA", "Pokemon clickado: $pokemonItem, lista ${PokemonHomeViewHolder.favorites.toString()}")

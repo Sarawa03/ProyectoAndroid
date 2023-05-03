@@ -72,9 +72,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun addFavPokemon(pokemonItem: PokemonItem){
-        val mainActivity = activity as MainActivity
-        val email = mainActivity.getEmail()
-        viewModel.addFavoritePokemon(pokemonItem, email)
+        viewModel.addFavoritePokemon(pokemonItem)
     }
 
     private fun unfavPokemon(pokemonItem: String){

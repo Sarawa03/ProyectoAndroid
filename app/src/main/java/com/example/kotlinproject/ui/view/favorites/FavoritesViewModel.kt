@@ -24,9 +24,9 @@ class FavoritesViewModel @Inject constructor(
 ): ViewModel(){
     val pokemonFavoritesViewModel = MutableLiveData<List<PokemonItem>>()
 
-    fun addFavPokemon(pokemonItem: PokemonItem, email: String) {
+    fun addFavoritePokemon(pokemonItem: PokemonItem) {
         viewModelScope.launch {
-            addFavPokemon(pokemonItem, email)
+            addFavPokemon(pokemonItem)
             PokemonHomeViewHolder.favorites.add(pokemonItem.id)
         }
         Log.i("PATATA", "lista ${PokemonHomeViewHolder.favorites.toString()}, Pokemon clickado: $pokemonItem")

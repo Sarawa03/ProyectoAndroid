@@ -27,9 +27,9 @@ class PokemonRepository @Inject constructor(
         return api.getPokemonByName(name).toDomain()
     }
 
-    suspend fun addFavPokemon(favPokemon: PokemonItem, email: String) {
-        Log.i("PATATA", favPokemonDao.getAllFavPokemons().orEmpty().toString())
-        //favPokemonDao.insertFavPokemon(favPokemon.toEntityId(email))
+    suspend fun addFavPokemon(favPokemon: PokemonItem) {
+        Log.i("DEBUG_TEST", favPokemonDao.getAllFavPokemons().orEmpty().toString())
+        favPokemonDao.insertFavPokemon(favPokemon.toEntityId())
     }
 
     suspend fun removeFavPokemon(favPokemon: String) {

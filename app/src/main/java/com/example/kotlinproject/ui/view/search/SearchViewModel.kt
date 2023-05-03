@@ -38,9 +38,9 @@ class SearchViewModel @Inject constructor(
         }
     }
 
-    fun addFavPokemon(pokemonItem: PokemonItem, email: String) {
+    fun addFavoritePokemon(pokemonItem: PokemonItem) {
         viewModelScope.launch {
-            addFavPokemon(pokemonItem, email)
+            addFavPokemon(pokemonItem)
             PokemonHomeViewHolder.favorites.add(pokemonItem.id)
         }
         Log.i("PATATA", "Pokemon clickado: $pokemonItem, lista ${PokemonHomeViewHolder.favorites.toString()}")

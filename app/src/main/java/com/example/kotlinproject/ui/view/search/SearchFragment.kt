@@ -73,9 +73,8 @@ class SearchFragment : Fragment() {
     }
 
     private fun addFavPokemon(pokemonItem: PokemonItem){
-        val mainActivity = activity as MainActivity
-        val email = mainActivity.getEmail()
-        viewModel.addFavPokemon(pokemonItem,email)
+
+        viewModel.addFavoritePokemon(pokemonItem)
     }
 
     private fun unfavPokemon(pokemonItem: String){
