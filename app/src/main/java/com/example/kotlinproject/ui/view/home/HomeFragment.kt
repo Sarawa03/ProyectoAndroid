@@ -50,7 +50,6 @@ class HomeFragment : Fragment() {
 
         viewModel.randomPokemons()
 
-
         binding.swipe.setColorSchemeColors(resources.getColor(R.color.pokedexColor), resources.getColor(R.color.loading2))
         binding.swipe.setOnRefreshListener {
             binding.swipe.isRefreshing = true
@@ -65,7 +64,6 @@ class HomeFragment : Fragment() {
     ): View? {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
     private fun navigateToDetail(id: String){

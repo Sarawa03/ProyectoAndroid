@@ -13,7 +13,7 @@
     <color name="background_component_selected">#FF111328</color>
     <color name="background_app">#2E2457</color>
     <color name="background_button">#EB1555</color>
-    <color name="text">#8B80B8</color>
+    <color name="text">#FAA579</color>
     <color name="background_fab">#FF6200EE</color>
 
     <color name="hp_color">#8BC34A</color>
@@ -23,5 +23,7 @@
     <color name="special_defense_color">#C3B34A</color>
     <color name="speed">#4AC38B</color>
     <color name="pokedexColor">#F07A3C</color>
+    <color name="pokedexLight">#FAA579</color>
+    <color name="detailsBackground">#8F4C2A</color>
     <color name="loading2">#A15730</color>
 </resources>

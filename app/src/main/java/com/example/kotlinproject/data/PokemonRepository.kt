@@ -5,6 +5,7 @@ import com.example.kotlinproject.data.database.dao.FavPokemonDao
 import com.example.kotlinproject.data.database.entities.FavPokemonEntity
 import com.example.kotlinproject.data.model.PokeResponse
 import com.example.kotlinproject.data.network.PokeService
+import com.example.kotlinproject.domain.model.BerryItem
 import com.example.kotlinproject.domain.model.PokemonItem
 import com.example.kotlinproject.domain.model.toDomain
 import javax.inject.Inject
@@ -38,6 +39,10 @@ class PokemonRepository @Inject constructor(
         Log.i("PATATA", favPokemonDao.getAllFavPokemons().toString())
         return api.getAllFavs(favPokemonDao.getAllFavPokemons().orEmpty())
 
+    }
+
+    suspend fun getBerryByIdOrName(name: String): BerryItem{
+        return api.getBerryByIdOrName(name).toDomain()
     }
 
 }

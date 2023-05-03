@@ -26,12 +26,11 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="550dp"
         android:layout_marginTop="220dp"
         android:elevation="8dp"
-        app:cardBackgroundColor="@color/background_app"
+        app:cardBackgroundColor="@color/detailsBackground"
         app:cardCornerRadius="42dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -74,6 +73,7 @@
                     android:textColor="@color/text"
                     tools:text="POTATO" />
 
+
                 <TextView
                     android:id="@+id/tvWeight"
                     android:layout_width="0dp"
@@ -95,9 +95,8 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="250dp"
                 android:layout_marginHorizontal="16dp"
-                android:layout_marginBottom="40dp"
                 android:gravity="bottom"
                 android:orientation="vertical">
 
@@ -106,7 +105,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginHorizontal="4dp"
-                    android:layout_marginVertical="2dp"
+                    android:layout_marginVertical="4dp"
+
                     android:layout_weight="1">
 
                     <TextView
@@ -250,9 +250,9 @@
 
     </androidx.cardview.widget.CardView>
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@color/background_app"
-        app:layout_constraintBottom_toBottomOf="parent" />
+<!--    <FrameLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="60dp"-->
+<!--        android:background="@color/detailsBackground"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent" />-->
 </androidx.constraintlayout.widget.ConstraintLayout>
