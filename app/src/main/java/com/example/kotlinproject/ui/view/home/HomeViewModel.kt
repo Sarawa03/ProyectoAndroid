@@ -44,7 +44,7 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    fun addFavPokemon(pokemonItem: PokemonItem, email: String) {
+    fun addFavoritePokemon(pokemonItem: PokemonItem, email: String) {
         viewModelScope.launch {
             addFavPokemon(pokemonItem, email)
             PokemonHomeViewHolder.favorites.add(pokemonItem.id)

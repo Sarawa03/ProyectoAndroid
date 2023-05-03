@@ -2,6 +2,7 @@ package com.example.kotlinproject.ui.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
@@ -15,16 +16,20 @@ class MainActivity : AppCompatActivity() {
     enum class ProviderType{
         BASIC
     }
+
+
     private lateinit var navController: NavController
     private lateinit var binding: ActivityMainBinding
-    private val email = intent.getStringExtra("email")
-    private val provider = intent.getStringExtra("provider")
+    private var email: String? = null
+    private var provider: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        email = intent.getStringExtra("email")
+        provider = intent.getStringExtra("provider")
 
         val bottomNavigationView = binding.bottomNavView
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
@@ -44,10 +49,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun getEmail(): String{
-        return email!!
+        Log.i("DEBUGGING", email!!)
+//        return email
+        return ""
     }
     fun getProvider(): String{
-        return provider!!
+        Log.i("DEBUGGING", provider!!)
+//        return provider
+        return ""
     }
     fun showDetails(id: String) {
         val bundle = Bundle()

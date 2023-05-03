@@ -27,6 +27,8 @@ class AuthActivity : AppCompatActivity() {
     }
 
     fun goHome(email: String, provider: MainActivity.ProviderType){
+        Log.i("PATATA", email)
+        Log.i("PATATA", provider.name)
         val intent = Intent(this, MainActivity::class.java).apply {
             putExtra("email", email)
             putExtra("provider", provider.name)
