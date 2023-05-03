@@ -3,6 +3,7 @@ package com.example.kotlinproject.data
 import android.util.Log
 import com.example.kotlinproject.data.database.dao.FavPokemonDao
 import com.example.kotlinproject.data.database.entities.FavPokemonEntity
+import com.example.kotlinproject.data.database.entities.toEntityId
 import com.example.kotlinproject.data.model.PokeResponse
 import com.example.kotlinproject.data.network.PokeService
 import com.example.kotlinproject.domain.model.BerryItem
@@ -26,8 +27,8 @@ class PokemonRepository @Inject constructor(
         return api.getPokemonByName(name).toDomain()
     }
 
-    suspend fun addFavPokemon(favPokemon: FavPokemonEntity) {
-        favPokemonDao.insertFavPokemon(favPokemon)
+    suspend fun addFavPokemon(favPokemon: PokemonItem, email: String) {
+        favPokemonDao.insertFavPokemon(favPokemon.toEntityId(email))
     }
 
     suspend fun removeFavPokemon(favPokemon: String) {

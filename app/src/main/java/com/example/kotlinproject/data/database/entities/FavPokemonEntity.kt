@@ -9,8 +9,8 @@ import com.example.kotlinproject.domain.model.PokemonItem
 data class FavPokemonEntity(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id") val id: Int = 0,
-    @ColumnInfo(name = "idPokemon") val idPokemon: String
-
+    @ColumnInfo(name = "idPokemon") val idPokemon: String,
+    @ColumnInfo(name = "email") val email: String
 )
 
-fun PokemonItem.toEntityId() = FavPokemonEntity(idPokemon = id)
+fun PokemonItem.toEntityId(email: String) = FavPokemonEntity(idPokemon = id, email = email)

@@ -1,5 +1,6 @@
 package com.example.kotlinproject.data.database.dao
 
+import android.provider.ContactsContract.CommonDataKinds.Email
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
