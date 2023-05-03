@@ -12,6 +12,9 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
+    enum class ProviderType{
+        BASIC
+    }
     private lateinit var navController: NavController
     private lateinit var binding: ActivityMainBinding
 

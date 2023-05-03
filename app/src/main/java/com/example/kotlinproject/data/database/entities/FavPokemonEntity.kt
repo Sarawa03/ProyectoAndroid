@@ -10,6 +10,7 @@ data class FavPokemonEntity(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id") val id: Int = 0,
     @ColumnInfo(name = "idPokemon") val idPokemon: String
+
 )
 
 fun PokemonItem.toEntityId() = FavPokemonEntity(idPokemon = id)
