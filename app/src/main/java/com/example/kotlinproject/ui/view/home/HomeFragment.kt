@@ -60,7 +60,7 @@ class HomeFragment : Fragment() {
         binding.logOut.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
             val mainActivity = activity as MainActivity
-            mainActivity.goBack()
+            mainActivity.onBackPressed()
         }
 
     }
