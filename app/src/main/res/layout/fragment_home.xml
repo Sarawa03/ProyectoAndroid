@@ -7,6 +7,16 @@
     tools:context=".ui.view.search.SearchFragment">
 
     <!-- TODO: Update blank fragment layout -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/logOut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="10dp"
+        android:backgroundTint="@color/pokedexLight"
+        android:src="@drawable/ic_logout"/>
+
     <ProgressBar
         android:id="@+id/loading"
         android:layout_width="wrap_content"

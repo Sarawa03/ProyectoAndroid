@@ -9,6 +9,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.kotlinproject.R
 import com.example.kotlinproject.databinding.ActivityMainBinding
 import com.example.kotlinproject.data.model.FavPokemon
+import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -19,6 +20,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object{
+
         var email: String? = null
         var provider: String? = null
         var listFavorites: MutableList<FavPokemon> = mutableListOf()
@@ -43,6 +45,11 @@ class MainActivity : AppCompatActivity() {
 
         bottomNavigationView.setupWithNavController(navController)
 
+        initListeners()
+    }
+
+    private fun initListeners() {
+
         binding.bottomNavView.setOnItemSelectedListener {
             when(it.itemId){
                 binding.bottomNavView.menu.getItem(0).itemId -> navController.navigate(it.itemId)
@@ -51,6 +58,7 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
+
     }
 
     fun getEmail(): String{
@@ -69,5 +77,8 @@ class MainActivity : AppCompatActivity() {
         navController.navigate(R.id.detailsFragment, bundle)
     }
 
+    fun goBack() {
+        onBackPressed()
+    }
 
 }

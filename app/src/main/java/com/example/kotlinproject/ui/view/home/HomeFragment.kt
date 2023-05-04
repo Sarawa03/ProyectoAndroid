@@ -17,6 +17,7 @@ import com.example.kotlinproject.databinding.FragmentHomeBinding
 import com.example.kotlinproject.domain.model.PokemonItem
 import com.example.kotlinproject.ui.view.MainActivity
 import com.example.kotlinproject.ui.view.home.recyclerview.PokemonHomeAdapter
+import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -54,6 +55,12 @@ class HomeFragment : Fragment() {
         binding.swipe.setOnRefreshListener {
             binding.swipe.isRefreshing = true
             viewModel.randomPokemons()
+        }
+
+        binding.logOut.setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+            val mainActivity = activity as MainActivity
+            mainActivity.goBack()
         }
 
     }

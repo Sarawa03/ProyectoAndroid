@@ -10,7 +10,7 @@
     
     <style name="Theme.App.Starting" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/pokedexLight</item>
-        <item name="windowSplashScreenAnimatedIcon">@drawable/pokesplashscreen</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/splashscreen</item>
         <item name="windowSplashScreenAnimationDuration">300</item>
         <item name="postSplashScreenTheme">@style/Base.Theme.KotlinProject</item>
     </style>
