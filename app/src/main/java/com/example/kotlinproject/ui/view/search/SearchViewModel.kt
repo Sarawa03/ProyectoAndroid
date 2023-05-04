@@ -9,7 +9,9 @@ import com.example.kotlinproject.domain.AddFavPokemon
 import com.example.kotlinproject.domain.GetPokemonById
 import com.example.kotlinproject.domain.GetPokemonByName
 import com.example.kotlinproject.domain.RemoveFavPokemon
+import com.example.kotlinproject.domain.model.FavPokemon
 import com.example.kotlinproject.domain.model.PokemonItem
+import com.example.kotlinproject.ui.view.MainActivity
 import com.example.kotlinproject.ui.view.home.recyclerview.PokemonHomeViewHolder
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -41,16 +43,16 @@ class SearchViewModel @Inject constructor(
     fun addFavoritePokemon(pokemonItem: PokemonItem) {
         viewModelScope.launch {
             addFavPokemon(pokemonItem)
-            PokemonHomeViewHolder.favorites.add(pokemonItem.id)
+            MainActivity.listFavorites.add(FavPokemon(pokemonItem.id, MainActivity.email!!))
         }
-        Log.i("PATATA", "Pokemon clickado: $pokemonItem, lista ${PokemonHomeViewHolder.favorites.toString()}")
+        //Log.i("PATATA", "Pokemon clickado: $pokemonItem, lista ${PokemonHomeViewHolder.favorites.toString()}")
     }
 
     fun unfavPokemon(pokemonItem: String) {
         viewModelScope.launch {
             removeFavPokemon(pokemonItem)
-            PokemonHomeViewHolder.favorites.remove(pokemonItem)
+            MainActivity.listFavorites.remove(FavPokemon(pokemonItem, MainActivity.email!!))
         }
-        Log.i("PATATA", "Pokemon clickado: $pokemonItem, lista ${PokemonHomeViewHolder.favorites.toString()}")
+        //Log.i("PATATA", "Pokemon clickado: $pokemonItem, lista ${PokemonHomeViewHolder.favorites.toString()}")
     }
 }

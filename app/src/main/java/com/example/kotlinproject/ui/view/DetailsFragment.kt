@@ -95,6 +95,7 @@ class DetailsFragment() : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //TODO pasar este al on view created
         arguments?.let {
             idPokemon = it.getString(ID_POKEMON)
             //param2 = it.getString(ARG_PARAM2)

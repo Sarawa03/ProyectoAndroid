@@ -8,7 +8,9 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.kotlinproject.R
 import com.example.kotlinproject.databinding.ActivityMainBinding
+import com.example.kotlinproject.domain.model.FavPokemon
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Singleton
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -20,7 +22,7 @@ class MainActivity : AppCompatActivity() {
     companion object{
         var email: String? = null
         var provider: String? = null
-
+        var listFavorites: MutableList<FavPokemon> = mutableListOf()
     }
 
     private lateinit var navController: NavController

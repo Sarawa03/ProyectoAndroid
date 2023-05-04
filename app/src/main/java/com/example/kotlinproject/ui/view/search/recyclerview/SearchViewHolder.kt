@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlinproject.R
 import com.example.kotlinproject.databinding.ItemPokemonBinding
 import com.example.kotlinproject.domain.model.PokemonItem
+import com.example.kotlinproject.ui.view.MainActivity
 import com.example.kotlinproject.ui.view.home.recyclerview.PokemonHomeViewHolder
 import com.squareup.picasso.Picasso
 import java.text.DecimalFormat
@@ -24,12 +25,11 @@ class SearchViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         }
         Picasso.get().load(pokemonItem.sprites.imgFrontM).into(binding.ivPokemon)
 
-        if(PokemonHomeViewHolder.favorites.contains(pokemonItem.id))binding.favIcon.setImageResource(
-            R.drawable.ic_favorites_enabled)
+        if(containsPokemonItem(pokemonItem))binding.favIcon.setImageResource(R.drawable.ic_favorites_enabled)
         else binding.favIcon.setImageResource(R.drawable.ic_favorite_disabled)
 
         binding.favIcon.setOnClickListener {
-            if(PokemonHomeViewHolder.favorites.contains(pokemonItem.id)){
+            if(containsPokemonItem(pokemonItem)){
                 binding.favIcon.setImageResource(R.drawable.ic_favorite_disabled)
                 unfavPokemon(pokemonItem.id)
             }else{
@@ -40,6 +40,13 @@ class SearchViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         }
 
         binding.root.setOnClickListener { onItemSelected(pokemonItem.id) }
+    }
+
+    private fun containsPokemonItem(pokemonItem: PokemonItem): Boolean{
+        MainActivity.listFavorites.forEach {
+            if(it.email== MainActivity.email && it.idPokemon==pokemonItem.id) return true
+        }
+        return false
     }
 
 }
