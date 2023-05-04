@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.view.favorites.FavoritesFragment">
+    tools:context=".ui.view.favorites.FavoritesFragment"
+    android:background="@color/backgroundColor">
 
     <!-- TODO: Update blank fragment layout -->
     <ProgressBar
@@ -33,7 +34,8 @@
         android:layout_width="match_parent"
         app:layout_constraintTop_toBottomOf="@id/tvFavorites"
         android:layout_height="1dp"
-        android:layout_marginTop="10dp"
+        android:layout_margin="20dp"
+        app:dividerColor="@color/light_grey"
         />
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvPokedex"
@@ -44,6 +46,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/divider"
-
+        app:layout_constraintBottom_toBottomOf="parent"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

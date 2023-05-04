@@ -92,6 +92,7 @@ dependencies {
     //Auth
     implementation 'com.google.firebase:firebase-auth:22.0.0'
     implementation 'com.google.firebase:firebase-auth:22.0.0'
+    implementation 'com.google.android.gms:play-services-auth:20.5.0'
 
     //Splash
     implementation 'androidx.core:core-splashscreen:1.0.1'

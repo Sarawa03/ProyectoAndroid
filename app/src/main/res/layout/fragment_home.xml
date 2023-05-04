@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.view.search.SearchFragment">
+    tools:context=".ui.view.search.SearchFragment"
+    android:background="@color/backgroundColor">
 
     <!-- TODO: Update blank fragment layout -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -14,8 +15,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_margin="10dp"
-        android:backgroundTint="@color/pokedexLight"
-
+        android:backgroundTint="@color/accent"
+        app:tint="@color/black"
         android:src="@drawable/ic_logout"
         android:contentDescription="@string/log_out_button" />
 
@@ -45,14 +46,17 @@
         android:layout_width="match_parent"
         app:layout_constraintTop_toBottomOf="@id/tvHome"
         android:layout_height="1dp"
-        android:layout_marginTop="10dp"
+        android:layout_margin="20dp"
+        app:dividerColor="@color/light_grey"
         />
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipe"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf="@id/divider"
+        app:layout_constraintBottom_toBottomOf="parent"
+
         android:layout_marginTop="10dp">
 
         <androidx.recyclerview.widget.RecyclerView
