@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.example.kotlinproject.R
@@ -18,8 +19,12 @@ class AuthActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val screenSplash = installSplashScreen()
         binding = ActivityAuthBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        Thread.sleep(1000)
+        screenSplash.setKeepOnScreenCondition{false}
 
         val authNavHostFragment = supportFragmentManager.findFragmentById(R.id.auth_nav_host_fragment) as NavHostFragment
         navController = authNavHostFragment.navController
