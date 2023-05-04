@@ -56,7 +56,7 @@
             app:endIconMode="password_toggle"
             app:helperText="Password must have 6 characters atleast*"
             app:helperTextTextColor="@color/red"
-            app:startIconDrawable="@drawable/ic_email">
+            app:startIconDrawable="@drawable/ic_password">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etPassword"
