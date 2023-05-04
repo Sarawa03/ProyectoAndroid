@@ -2,13 +2,13 @@ package com.example.kotlinproject.data
 
 import android.util.Log
 import com.example.kotlinproject.data.database.dao.FavPokemonDao
-import com.example.kotlinproject.data.database.entities.FavPokemonEntity
 import com.example.kotlinproject.data.database.entities.toEntityId
-import com.example.kotlinproject.data.model.PokeResponse
 import com.example.kotlinproject.data.network.PokeService
 import com.example.kotlinproject.domain.model.BerryItem
+import com.example.kotlinproject.domain.model.FavPokemonItem
 import com.example.kotlinproject.domain.model.PokemonItem
 import com.example.kotlinproject.domain.model.toDomain
+import com.example.kotlinproject.ui.view.MainActivity
 import javax.inject.Inject
 
 
@@ -28,8 +28,9 @@ class PokemonRepository @Inject constructor(
     }
 
     suspend fun addFavPokemon(favPokemon: PokemonItem) {
-        Log.i("DEBUG_TEST", favPokemonDao.getAllFavPokemons().orEmpty().toString())
+
         favPokemonDao.insertFavPokemon(favPokemon.toEntityId())
+
     }
 
     suspend fun removeFavPokemon(favPokemon: String) {
@@ -39,7 +40,9 @@ class PokemonRepository @Inject constructor(
 
     suspend fun getAllFavs(): List<PokemonItem> {
         Log.i("PATATA", favPokemonDao.getAllFavPokemons().toString())
-        return api.getAllFavs(favPokemonDao.getAllFavPokemons().orEmpty())
+        val list = favPokemonDao.getAllFavPokemons().orEmpty().filter { it.email== MainActivity.email }
+
+        return api.getAllFavs(list)
 
     }
 

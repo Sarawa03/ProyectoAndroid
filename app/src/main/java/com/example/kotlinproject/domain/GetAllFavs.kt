@@ -1,6 +1,7 @@
 package com.example.kotlinproject.domain
 
 import com.example.kotlinproject.data.PokemonRepository
+import com.example.kotlinproject.domain.model.FavPokemonItem
 import com.example.kotlinproject.domain.model.PokemonItem
 import javax.inject.Inject
 

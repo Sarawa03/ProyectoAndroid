@@ -1,4 +1,4 @@
-package com.example.kotlinproject.domain.model
+package com.example.kotlinproject.data.model
 
 data class FavPokemon(
     var idPokemon: String,

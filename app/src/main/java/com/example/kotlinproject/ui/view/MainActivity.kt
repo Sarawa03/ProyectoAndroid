@@ -8,9 +8,8 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.kotlinproject.R
 import com.example.kotlinproject.databinding.ActivityMainBinding
-import com.example.kotlinproject.domain.model.FavPokemon
+import com.example.kotlinproject.data.model.FavPokemon
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Singleton
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {

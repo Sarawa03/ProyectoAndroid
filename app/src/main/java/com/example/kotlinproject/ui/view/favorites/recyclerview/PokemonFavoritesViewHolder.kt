@@ -16,7 +16,6 @@ class PokemonFavoritesViewHolder (view: View): RecyclerView.ViewHolder(view) {
     private val binding = ItemPokemonBinding.bind(view)
 
     fun bind(pokemonItem: PokemonItem, onItemSelected: (String) -> Unit, addFavPokemon: (PokemonItem) -> Unit, unfavPokemon: (String) -> Unit){
-        Log.i("PATATA", pokemonItem.toString())
         binding.tvPokemonName.text = pokemonItem.name
 
         val dec = DecimalFormat("0000")
@@ -27,7 +26,6 @@ class PokemonFavoritesViewHolder (view: View): RecyclerView.ViewHolder(view) {
         }
         Picasso.get().load(pokemonItem.sprites.imgFrontM).into(binding.ivPokemon)
 
-        Log.i("CONTAINSDEBUG", "test list: ${MainActivity.listFavorites}")
         if(containsPokemonItem(pokemonItem))binding.favIcon.setImageResource(R.drawable.ic_favorites_enabled)
         else binding.favIcon.setImageResource(R.drawable.ic_favorite_disabled)
 
@@ -46,11 +44,8 @@ class PokemonFavoritesViewHolder (view: View): RecyclerView.ViewHolder(view) {
     }
 
     private fun containsPokemonItem(pokemonItem: PokemonItem): Boolean{
-        Log.i("CONTAINSDEBUG", "list: ${MainActivity.listFavorites}")
         val myList = MainActivity.listFavorites.filter { it.email==MainActivity.email }
         myList.forEach {
-            Log.i("CONTAINSDEBUG", "email: ${MainActivity.email} , pokemon ${it.idPokemon}")
-
             if(it.idPokemon==pokemonItem.id) { return true }
         }
         return false
