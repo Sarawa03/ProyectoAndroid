@@ -22,8 +22,10 @@
     <color name="special_attack_color">#C34AAF</color>
     <color name="special_defense_color">#C3B34A</color>
     <color name="speed">#4AC38B</color>
-    <color name="pokedexColor">#F07A3C</color>
-    <color name="pokedexLight">#FAA579</color>
+    <color name="pokedexColor">#B1EAF4</color>
+    <color name="backgroundColor">#ECF9FB</color>
+    <color name="accent">#FAA579</color>
     <color name="detailsBackground">#8F4C2A</color>
     <color name="loading2">#A15730</color>
+    <color name="light_grey">#C8C8C8</color>
 </resources>

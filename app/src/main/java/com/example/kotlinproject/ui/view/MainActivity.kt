@@ -1,5 +1,8 @@
 package com.example.kotlinproject.ui.view
 
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -15,7 +18,8 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     enum class ProviderType{
-        BASIC
+        BASIC,
+        GOOGLE
     }
 
     companion object{
@@ -27,6 +31,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
     private lateinit var binding: ActivityMainBinding
+    private lateinit var prefs: SharedPreferences.Editor
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,6 +41,7 @@ class MainActivity : AppCompatActivity() {
 
         email = intent.getStringExtra("email")
         provider = intent.getStringExtra("provider")
+        prefs = getSharedPreferences(getString(R.string.prefs), Context.MODE_PRIVATE).edit()
 
         val bottomNavigationView = binding.bottomNavView
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
@@ -44,7 +50,15 @@ class MainActivity : AppCompatActivity() {
 
         bottomNavigationView.setupWithNavController(navController)
 
+        saveEmailAndProvider()
         initListeners()
+    }
+
+    private fun saveEmailAndProvider() {
+        prefs.putString("email", email)
+        prefs.putString("provider", provider)
+        prefs.apply()
+
     }
 
     private fun initListeners() {
@@ -63,6 +77,14 @@ class MainActivity : AppCompatActivity() {
         val bundle = Bundle()
         bundle.putString("id", id)
         navController.navigate(R.id.detailsFragment, bundle)
+    }
+
+    fun logOut() {
+        prefs.clear()
+        prefs.apply()
+        val intent = Intent(this, AuthActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
 }

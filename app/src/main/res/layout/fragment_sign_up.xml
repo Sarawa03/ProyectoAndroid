@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
     tools:context=".ui.view.login.LoginFragment">
 
     <TextView
@@ -30,67 +31,122 @@
 
         <com.google.android.material.textfield.TextInputLayout
 
+            style="Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_marginBottom="5dp"
             android:hint="@string/email"
+            app:boxStrokeColor="@color/accent"
             app:startIconDrawable="@drawable/ic_email">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etEmail"
-                android:inputType="textEmailAddress"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            style="Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_marginTop="5dp"
             android:hint="@string/password"
-            app:startIconDrawable="@drawable/ic_email"
             app:counterEnabled="true"
+            app:endIconMode="password_toggle"
             app:helperText="Password must have 6 characters atleast*"
             app:helperTextTextColor="@color/red"
-            app:endIconMode="password_toggle">
+            app:startIconDrawable="@drawable/ic_email">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/etPassword"
-                android:inputType="textPassword"/>
+                android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:backgroundTint="@color/accent"
+            android:text="@string/sign_up"
+            android:textColor="@color/black"
+            app:cornerRadius="5dp"
+            app:strokeColor="@color/light_grey"
+            app:strokeWidth="1dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnLogIn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:backgroundTint="@color/backgroundColor"
+            android:text="@string/login"
+            android:textColor="@color/black"
+            app:cornerRadius="5dp" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:id="@+id/dividerGoogle"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/editTexts">
 
-        <Button
-            android:id="@+id/btnSignUp"
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="100dp"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="1"
+            app:dividerColor="@color/light_grey" />
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="@string/sign_up"
-            android:textColor="@color/black" />
+            android:text="@string/or" />
 
-        <Button
-            android:id="@+id/btnLogIn"
-            android:layout_width="wrap_content"
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="100dp"
+            android:layout_weight="1"
+            app:dividerColor="@color/light_grey" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dividerGoogle">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnGoogle"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:backgroundTint="@color/pokedexLight"
-            android:text="@string/login"
-            android:textColor="@color/black" />
-
+            android:backgroundTint="@color/white"
+            android:drawableLeft="@drawable/google_icon"
+            android:text="@string/google"
+            android:textColor="@color/black"
+            app:cornerRadius="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dividerGoogle"
+            app:strokeColor="@color/light_grey"
+            app:strokeWidth="1dp" />
 
     </LinearLayout>
 
