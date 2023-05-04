@@ -37,6 +37,7 @@
             android:layout_marginBottom="5dp"
             android:hint="@string/email"
             app:boxStrokeColor="@color/accent"
+            app:hintTextColor="@color/accent"
             app:startIconDrawable="@drawable/ic_email">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -52,10 +53,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:hint="@string/password"
+            app:boxStrokeColor="@color/accent"
             app:counterEnabled="true"
             app:endIconMode="password_toggle"
             app:helperText="Password must have 6 characters atleast*"
             app:helperTextTextColor="@color/red"
+            app:hintTextColor="@color/accent"
             app:startIconDrawable="@drawable/ic_password">
 
             <com.google.android.material.textfield.TextInputEditText
