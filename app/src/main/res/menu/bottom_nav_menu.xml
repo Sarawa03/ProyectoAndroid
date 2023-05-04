@@ -9,10 +9,6 @@
         android:id="@+id/searchFragment"
         android:icon="@drawable/ic_search"
         android:title="@string/search"/>
-<!--    <item-->
-<!--        android:id="@+id/berryFragment"-->
-<!--        android:icon="@drawable/ic_berry"-->
-<!--        android:title="@string/berries"/>-->
     <item
         android:id="@+id/favoritesFragment"
         android:icon="@drawable/ic_favorites_enabled"

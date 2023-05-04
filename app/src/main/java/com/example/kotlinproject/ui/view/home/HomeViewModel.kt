@@ -21,7 +21,6 @@ class HomeViewModel @Inject constructor(
 ): ViewModel(){
 
     val pokemonHomeViewModel = MutableLiveData<List<PokemonItem>>()
-    val isLoading = MutableLiveData<Boolean>()
 
     fun randomPokemons(){
         viewModelScope.launch {
@@ -44,7 +43,6 @@ class HomeViewModel @Inject constructor(
             addFavPokemon(pokemonItem)
             MainActivity.listFavorites.add(FavPokemon(pokemonItem.id, MainActivity.email!!))
         }
-//        Log.i("PATATA", "Pokemon clickado: $pokemonItem, lista ${PokemonHomeViewHolder.favorites.toString()}")
     }
 
     fun unfavPokemon(pokemonItem: String) {
@@ -52,7 +50,6 @@ class HomeViewModel @Inject constructor(
             removeFavPokemon(pokemonItem)
             MainActivity.listFavorites.remove(FavPokemon(pokemonItem, MainActivity.email!!))
         }
-//        Log.i("PATATA", "Pokemon clickado: $pokemonItem, lista ${PokemonHomeViewHolder.favorites.toString()}")
     }
 
 

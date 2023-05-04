@@ -9,7 +9,6 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.kotlinproject.R
 import com.example.kotlinproject.databinding.ActivityMainBinding
 import com.example.kotlinproject.data.model.FavPokemon
-import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -60,25 +59,10 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-
-    fun getEmail(): String{
-        Log.i("DEBUGGING", email!!)
-        return email!!
-//        return ""
-    }
-    fun getProvider(): String{
-        Log.i("DEBUGGING", provider!!)
-        return provider!!
-//        return ""
-    }
     fun showDetails(id: String) {
         val bundle = Bundle()
         bundle.putString("id", id)
         navController.navigate(R.id.detailsFragment, bundle)
-    }
-
-    fun goBack() {
-        onBackPressed()
     }
 
 }

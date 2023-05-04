@@ -1,11 +1,8 @@
 package com.example.kotlinproject.data
 
-import android.util.Log
 import com.example.kotlinproject.data.database.dao.FavPokemonDao
 import com.example.kotlinproject.data.database.entities.toEntityId
 import com.example.kotlinproject.data.network.PokeService
-import com.example.kotlinproject.domain.model.BerryItem
-import com.example.kotlinproject.domain.model.FavPokemonItem
 import com.example.kotlinproject.domain.model.PokemonItem
 import com.example.kotlinproject.domain.model.toDomain
 import com.example.kotlinproject.ui.view.MainActivity
@@ -39,15 +36,11 @@ class PokemonRepository @Inject constructor(
     }
 
     suspend fun getAllFavs(): List<PokemonItem> {
-        Log.i("PATATA", favPokemonDao.getAllFavPokemons().toString())
         val list = favPokemonDao.getAllFavPokemons().orEmpty().filter { it.email== MainActivity.email }
 
         return api.getAllFavs(list)
 
     }
 
-    suspend fun getBerryByIdOrName(name: String): BerryItem{
-        return api.getBerryByIdOrName(name).toDomain()
-    }
 
 }

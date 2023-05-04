@@ -1,6 +1,5 @@
 package com.example.kotlinproject.data.network
 
-import com.example.kotlinproject.data.model.BerryResponse
 import com.example.kotlinproject.data.model.PokeResponse
 import retrofit2.Response
 import retrofit2.http.GET
@@ -13,7 +12,5 @@ interface ApiService {
     @GET("pokemon/{id}")
     suspend fun getPokemonById(@Path("id")pokemonId: String): Response<PokeResponse>
 
-    @GET("berry/{name}")
-    suspend fun getBerryByName(@Path("name")berryName: String): Response<BerryResponse>
 
 }

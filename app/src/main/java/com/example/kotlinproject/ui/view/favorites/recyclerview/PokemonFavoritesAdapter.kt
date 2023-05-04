@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlinproject.R
 import com.example.kotlinproject.domain.model.PokemonItem
-import com.example.kotlinproject.ui.view.home.recyclerview.PokemonHomeViewHolder
 import javax.inject.Inject
 
 class PokemonFavoritesAdapter @Inject constructor(

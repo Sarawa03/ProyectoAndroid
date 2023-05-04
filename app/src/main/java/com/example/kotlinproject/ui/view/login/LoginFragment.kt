@@ -6,8 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.kotlinproject.R
-import com.example.kotlinproject.databinding.FragmentHomeBinding
 import com.example.kotlinproject.databinding.FragmentLoginBinding
 import com.example.kotlinproject.ui.view.AuthActivity
 import com.example.kotlinproject.ui.view.MainActivity
@@ -37,7 +35,7 @@ class LoginFragment : Fragment() {
 
     private fun setup() {
         binding.btnLogIn.setOnClickListener {
-            if (binding.etEmail.text.isNotEmpty() && binding.etPassword.text.isNotEmpty()) {
+            if (!binding.etEmail.text.isNullOrBlank() && !binding.etPassword.text.isNullOrBlank()) {
                 FirebaseAuth.getInstance().signInWithEmailAndPassword(binding.etEmail.text.toString(), binding.etPassword.text.toString())
                     .addOnCompleteListener {
                         if(it.isSuccessful){
@@ -46,7 +44,6 @@ class LoginFragment : Fragment() {
                     }
             }
         }
-
 
         binding.btnSignUp.setOnClickListener {
             goToSignUp()

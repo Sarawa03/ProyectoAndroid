@@ -19,11 +19,6 @@
         android:name="com.example.kotlinproject.ui.view.search.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" />
-<!--    <fragment-->
-<!--        android:id="@+id/berryFragment"-->
-<!--        android:name="com.example.kotlinproject.ui.view.berries.BerryFragment"-->
-<!--        android:label="berry_fragment"-->
-<!--        tools:layout="@layout/fragment_berry" />-->
     <fragment
         android:id="@+id/favoritesFragment"
         android:name="com.example.kotlinproject.ui.view.favorites.FavoritesFragment"

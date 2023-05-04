@@ -21,11 +21,10 @@ class SearchViewModel @Inject constructor(
 ): ViewModel(){
 
     val searchViewModel = MutableLiveData<List<PokemonItem>>()
-    val isLoading = MutableLiveData<Boolean>()
     fun searchPokemonByName(name: String) {
         viewModelScope.launch {
             val result = getPokemonByName(name)
-            var response = mutableListOf<PokemonItem>()
+            val response = mutableListOf<PokemonItem>()
 
             if(result.name=="error"){
                 searchViewModel.postValue(emptyList())
@@ -41,7 +40,6 @@ class SearchViewModel @Inject constructor(
             addFavPokemon(pokemonItem)
             MainActivity.listFavorites.add(FavPokemon(pokemonItem.id, MainActivity.email!!))
         }
-        //Log.i("PATATA", "Pokemon clickado: $pokemonItem, lista ${PokemonHomeViewHolder.favorites.toString()}")
     }
 
     fun unfavPokemon(pokemonItem: String) {
@@ -49,6 +47,5 @@ class SearchViewModel @Inject constructor(
             removeFavPokemon(pokemonItem)
             MainActivity.listFavorites.remove(FavPokemon(pokemonItem, MainActivity.email!!))
         }
-        //Log.i("PATATA", "Pokemon clickado: $pokemonItem, lista ${PokemonHomeViewHolder.favorites.toString()}")
     }
 }

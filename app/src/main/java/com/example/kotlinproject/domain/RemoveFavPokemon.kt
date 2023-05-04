@@ -5,6 +5,6 @@ import javax.inject.Inject
 
 class RemoveFavPokemon @Inject constructor(
     private val repository: PokemonRepository
-){
+) {
     suspend operator fun invoke(favPokemon: String) = repository.removeFavPokemon(favPokemon)
 }

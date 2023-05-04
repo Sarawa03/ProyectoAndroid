@@ -21,7 +21,6 @@ import kotlin.math.roundToInt
 
 
 private const val ID_POKEMON = "id"
-//private const val IS_FAV = "isFav"//TODO
 
 @AndroidEntryPoint
 class DetailsFragment() : Fragment() {
@@ -32,7 +31,6 @@ class DetailsFragment() : Fragment() {
 
 
     private var idPokemon: String? = null
-    //private var param2: String? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -67,7 +65,7 @@ class DetailsFragment() : Fragment() {
     }
 
     private fun loadTypes(typeListItem: List<TypeListItem>) {
-        var sb = StringBuilder("Types: ")
+        val sb = StringBuilder("Types: ")
         typeListItem.forEach {
             sb.append(it.type.name)
             sb.append(" ")
@@ -98,7 +96,6 @@ class DetailsFragment() : Fragment() {
         //TODO pasar este al on view created
         arguments?.let {
             idPokemon = it.getString(ID_POKEMON)
-            //param2 = it.getString(ARG_PARAM2)
         }
     }
 
@@ -113,12 +110,10 @@ class DetailsFragment() : Fragment() {
 
     companion object {
         @JvmStatic
-        //fun newInstance(idPokemon: String, param2: String) =
         fun newInstance(idPokemon: String) =
             DetailsFragment().apply {
                 arguments = Bundle().apply {
                     putString(ID_POKEMON, idPokemon)
-                    //putString(ARG_PARAM2, param2)
                 }
             }
     }

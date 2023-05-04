@@ -39,10 +39,6 @@ class AuthActivity : AppCompatActivity() {
             putExtra("provider", provider.name)
         }
         startActivity(intent)
-//        val bundle = Bundle()
-//        bundle.putString("email", email)
-//        bundle.putString("provider", provider.toString())
-//        navController.navigate(R.id.homeFragment)
     }
     fun goSignUp(){
         navController.navigate(R.id.signUpFragment)

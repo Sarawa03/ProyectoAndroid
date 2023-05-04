@@ -1,13 +1,7 @@
 package com.example.kotlinproject.data.network
 
-import android.util.Log
 import com.example.kotlinproject.data.database.entities.FavPokemonEntity
-import com.example.kotlinproject.data.model.BerryResponse
 import com.example.kotlinproject.data.model.PokeResponse
-import com.example.kotlinproject.domain.model.Firmness
-import com.example.kotlinproject.domain.model.Flavor
-import com.example.kotlinproject.domain.model.FlavorItem
-import com.example.kotlinproject.domain.model.NaturalGiftType
 import com.example.kotlinproject.domain.model.PokeSprites
 import com.example.kotlinproject.domain.model.PokemonItem
 import com.example.kotlinproject.domain.model.StatName
@@ -25,8 +19,6 @@ class PokeService @Inject constructor(private val api: ApiService) {
     suspend fun getPokemonById(id: String): PokeResponse {
         return withContext(Dispatchers.IO){
             val response = api.getPokemonById(id)
-            Log.i("PATATA", id)
-            Log.i("PATATA", response.toString())
             response.body()!!
         }
     }
@@ -34,7 +26,6 @@ class PokeService @Inject constructor(private val api: ApiService) {
     suspend fun getPokemonByName(name: String): PokeResponse {
         return withContext(Dispatchers.IO){
             val response = api.getPokemonByName(name)
-            Log.i("PATATA", api.getPokemonByName(name).toString())
             response.body()?: defaultPokemon()
         }
     }
@@ -45,27 +36,8 @@ class PokeService @Inject constructor(private val api: ApiService) {
         return result
     }
 
-    suspend fun getBerryByIdOrName(name: String): BerryResponse {
-        return withContext(Dispatchers.IO){
-            val response = api.getBerryByName(name)
-            response.body()?: defaultBerry()
-        }
-    }
 
-    private fun defaultBerry(): BerryResponse {
-        return BerryResponse(
-            "1",
-            "cheri",
-            "3",
-            "5",
-            Firmness("soft"),
-            listOf(FlavorItem("10", Flavor("spicy"))),
-            NaturalGiftType("fire")
-        )
-    }
-
-
-    fun defaultPokemon(): PokeResponse{
+    private fun defaultPokemon(): PokeResponse{
         return PokeResponse(
             "1",
             "error",
